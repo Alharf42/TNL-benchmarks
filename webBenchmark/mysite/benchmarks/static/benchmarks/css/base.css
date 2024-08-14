@@ -1,0 +1,136 @@
+table,th,td{
+    
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 0.3vw;
+    tr:nth-child(even) {background-color: #f1f1f1;};
+   /* tr:nth-child(even) {background-color: #2e334e;};*/
+  }
+  td{
+    border: 1px solid lightgray;
+    /*border: 1px solid rgb(61, 61, 61);*/
+    /*color: rgb(211, 211, 211)*/
+  }
+h1{
+    border-bottom: solid 1px lightgray;
+    /*border-bottom: solid 1px rgb(95, 95, 95);*/
+    text-align: left;
+    
+}
+.un-bold{
+    font-weight: initial;
+    text-align: end;
+    padding: 0.2vw;
+    
+}
+
+th{
+    border: 1px solid;
+}
+section{
+    vertical-align: middle;
+    padding: 0.5vw;
+    margin: 0.5vw;
+}
+table{
+    white-space: nowrap;
+    margin-bottom: 4vw;
+}
+.js-plotly-plot{
+}
+#ToC a{
+    text-decoration: none;
+    color: black;
+    /*color: rgb(249, 248, 255)*/
+    
+}
+#ToC a:hover{
+    color: gray;
+}
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /*background-color: rgb(33, 35, 49);
+    color: rgb(249, 248, 255)*/
+}
+footer{
+    padding: 1vw;
+    text-align: right;
+    border-top: solid 1px black;
+    /*border-top: solid 1px rgb(249, 248, 255);*/
+}
+footer p {
+    margin: 0;
+}
+footer a{
+    color: gray;
+}
+ol{
+    padding-left: 45vw;
+    /*color: rgb(122, 133, 184);*/
+    color: gray;
+}
+.columnPlot{
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0.5vw;
+}
+.columnPlotContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+}
+.sizeDiv, .columnDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    color: #2e334e;
+    border-color: rgb(249, 248, 255);
+    font-weight: bold;
+}
+
+/*dark mode colors*/
+.dark-mode{
+    background-color: rgb(33, 35, 49);
+    color: rgb(233, 231, 240)
+}
+
+.dark-mode tr:nth-child(even) {
+    background-color: #252c3b;
+}
+.dark-mode td{
+    border: 1px solid rgb(45, 47, 56);
+    color: rgb(189, 189, 189)
+}
+.dark-mode th{
+    border-color:rgb(211,211,211);;
+    color: rgb(211,211,211);;
+}
+.dark-mode h1{
+    border-bottom: solid 1px rgb(95, 95, 95);
+}
+.dark-mode #ToC a{
+    color: rgb(249, 248, 255)
+}
+.dark-mode footer{
+    border-top: solid 1px rgb(249, 248, 255);
+}
+.dark-mode button{
+    color:rgb(249, 248, 255);
+    background-color: #2e334e;
+    border-color: black;
+}
+.dark-mode #ToC a:hover{
+    color: gray;
+}
+.dark-mode .un-bold{
+    color: rgb(211,211,211);
+}

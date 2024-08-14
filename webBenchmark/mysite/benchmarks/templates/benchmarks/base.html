@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ lang | default:'en' }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}TNL-benchmarks{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static "benchmarks/css/base.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "benchmarks/css/normalize.css" %}">
+        <script src="https://unpkg.com/mithril/mithril.js"></script>
+        <script src="https://cdn.plot.ly/plotly-2.34.0.min.js" charset="utf-8"></script>
+            
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body class="dark-mode">
+        <header>
+            <nav id="nav">
+                <script>
+                var root=document.getElementById("nav");
+                function darkMode(){
+                    var element = document.body;
+
+                    var buttonText = element.classList.contains("dark-mode") ? "Light mode" : "Dark mode";
+                   
+                    element.classList.toggle("dark-mode");
+                    m.render(root, m("button.darkButton", {onclick: darkMode}, buttonText));
+                }
+                var darkButton={
+                    view: function(){
+                        var buttonText = document.body.classList.contains("dark-mode") ? "Light mode" : "Dark mode";
+                        return m("button.darkButton",{onclick: darkMode},buttonText)
+                    }
+                }
+                m.mount(root, darkButton);
+
+            </script>
+            </nav>
+        </header>
+        <main id="content">
+            
+            <script>var djangoData = {{data|safe}};</script>
+            <script src="{% static "benchmarks/js/graphs.js" %}"></script>
+        </main>
+        <footer>
+            <p>Powered by <a href="https://www.djangoproject.com/">Django</a>.</p>
+        </footer>
+    </body>
+</html>
