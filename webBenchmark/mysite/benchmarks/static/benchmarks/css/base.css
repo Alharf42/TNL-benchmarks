@@ -1,5 +1,4 @@
 table,th,td{
-    
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
@@ -14,9 +13,10 @@ table,th,td{
     /*color: rgb(211, 211, 211)*/
   }
 h1{
-    border-bottom: solid 1px lightgray;
-    /*border-bottom: solid 1px rgb(95, 95, 95);*/
+    /*border-bottom: solid 1px lightgray;*/
+    
     text-align: left;
+    padding-left: 12vw;
     
 }
 .un-bold{
@@ -67,9 +67,10 @@ footer a{
     color: gray;
 }
 ol{
-    padding-left: 45vw;
+    /*padding-left: 45vw;*/
     /*color: rgb(122, 133, 184);*/
     color: gray;
+    margin-top: 0;
 }
 .columnPlot{
     margin-left: 0;
@@ -96,6 +97,59 @@ button{
     border-color: rgb(249, 248, 255);
     font-weight: bold;
 }
+.darkButton{
+    font-size: medium;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: right;
+   background-color: #f1f1f1;
+}
+#ToC button{
+border:0;
+padding: 0.5vw;
+font-size: 1vw;
+}
+
+/*dropdown menu*/
+/*///////////////////////////*/
+/*dropdown button*/
+.dropbtn:hover{
+color:gray;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content{
+    /*hidden by default*/
+    display: none;
+    position: absolute;
+    /*makes sure to overlap*/
+    z-index: 1;
+    background-color: white;
+    border: 1px solid lightgray;
+    height: 25vw;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: lightgray white;
+}
+.dropdown:hover .dropdown-content{
+    /*on hover displays content*/
+    display: block;
+}
+#ToC{
+    padding: 0;
+    margin:0;
+    background-color: #f1f1f1;
+    padding-bottom: 1vw;
+}
+.dropdown:hover .dropbtn{
+    color:gray;
+}
 
 /*dark mode colors*/
 .dark-mode{
@@ -115,7 +169,7 @@ button{
     color: rgb(211,211,211);;
 }
 .dark-mode h1{
-    border-bottom: solid 1px rgb(95, 95, 95);
+  /*  border-bottom: solid 1px rgb(95, 95, 95);*/
 }
 .dark-mode #ToC a{
     color: rgb(249, 248, 255)
@@ -125,7 +179,7 @@ button{
 }
 .dark-mode button{
     color:rgb(249, 248, 255);
-    background-color: #2e334e;
+    background-color: #252c3b;
     border-color: black;
 }
 .dark-mode #ToC a:hover{
@@ -133,4 +187,16 @@ button{
 }
 .dark-mode .un-bold{
     color: rgb(211,211,211);
+}
+.dark-mode .dropdown-content{
+    background-color: rgb(33, 35, 49);
+    scrollbar-color: gray rgb(33, 35, 49);
+    scrollbar-width: thin;
+    border-color: gray;
+}
+.dark-mode #ToC{
+    background-color: #252c3b;
+}
+.dark-mode nav{
+    background-color: #252c3b;
 }

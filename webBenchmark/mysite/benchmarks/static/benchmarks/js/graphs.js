@@ -309,20 +309,42 @@ const ColumnGraph = {
     }
 }
 
-var TableSection={
+//create nav
+var nav={
     view: function(){
-        return [m("section",{id: "ToC"},[
-            m("h1","Table of Contents"),
-            m("ol",[
+        return[m("section",{id: "ToC"},[
+           // m("h1","Table of Contents"),
+           m("button",[m(m.route.Link,{href: "/home"},"Home")]),
+           m("div.dropdown",[
+            m("button.dropbtn","Table of Contents"),
+            m("ol.dropdown-content",[     
                 djangoData.operation_order.map(op=>
-                    m("li",[m(`a.link[href = #${op}]`,`     ${op}`)])
+                    //there needs to be no white spaces int the link
+                    m("li",[m(m.route.Link,{href: `/${op.replaceAll(" ","")}`},`${op}`)])
                 ),
-                m("li",[m("a.link[href = #gemv]","gemv")])
+                m("li",[m(m.route.Link,{href: "/gemv"},"gemv")])
             ])
+        ])
         ]),
+    ]}
+}
+//create home route
+var Home={
+    view: function(){
+        return[ m(nav)
+        
+    ]}
+}
+//iterate ops-create page components-route them
+var TableSection;
+var sectionContainer =[];
+//function to create size "page" per op
+function TableSection(op){
+    return{
+    view: function(){
+        return [m(nav),
             m("section",[
                 //create table and graph for every op
-            djangoData.operation_order.map(op=>
                 m("div",[
                     m("h1",{id: op},op),
                     m("div.sizeDiv",[
@@ -341,21 +363,51 @@ var TableSection={
                 ])
 
         ]),
-    ),
-    m("div",[
-        m("h1",{id: "gemv"},"gemv"),
-        m("div.columnDiv",[
-            m(ColumnTable,{
-                    allCData: djangoData.allCData,
-                    allBDataPk: djangoData.allBDataPk
-                }),
-                m(ColumnGraph,{
-                    allCData: djangoData.allCData,
-                    allBDataPk: djangoData.allBDataPk
-                })
         ])
-    ]),
-        ])]
+    ]
     }
+}
+}
+
+
+var gemv={
+    view: function(){
+     return[
+        m(nav),
+        m("section",[  
+         m("div",[
+            m("h1",{id: "gemv"},"gemv"),
+            m("div.columnDiv",[
+                m(ColumnTable,{
+                        allCData: djangoData.allCData,
+                        allBDataPk: djangoData.allBDataPk
+                    }),
+                    m(ColumnGraph,{
+                        allCData: djangoData.allCData,
+                        allBDataPk: djangoData.allBDataPk
+                    })
+            ])
+        ]),
+    ]),
+    ]}
+}
+//add size "pages" to sectionContainer
+djangoData.operation_order.map(op=>
+    sectionContainer[op]=TableSection(op)
+)
+sectionContainer["gemv"]=gemv;
+//m.mount(root, TableSection);
+
+// Create the route map
+var routes = {
+    "/": Home,
 };
-m.mount(root, TableSection);
+
+// add routes to routes per op
+djangoData.operation_order.forEach(op => {
+    routes[`/${op.replaceAll(" ","")}`] = TableSection(op);
+});
+routes["/gemv"]=gemv;
+//console.log(routes);
+//route
+m.route(root, "/", routes);
